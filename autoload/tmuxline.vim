@@ -81,9 +81,10 @@ fun! tmuxline#set_statusline_simple(...) abort
   let curr_attr = len(curr_attr) ? ',' . curr_attr : curr_attr
 
   let line_settings = [
-        \ 'set -g status-style fg=colour' . fg . ',bg=colour' . bg . attr,
-        \ 'set -g window-status-current-style fg=colour' . curr_fg . ',bg=colour' . curr_bg . curr_attr]
+        \ 'set -g status-style fg="' . fg . '",bg="' . bg . '"',
+        \ 'set -g window-status-current-style fg="' . curr_fg . '",bg="' . curr_bg . '"']
 
+  set number
   try
     call tmuxline#apply(line_settings)
   catch /^tmuxline:/
